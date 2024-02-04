@@ -15,6 +15,7 @@ int handle_print(char *fmt, int *fmt_idx, va_list list, char *buffer)
 
 	fmt_t fmt_types[] = {
 		{'c', print_char}, {'s', print_str}, {'%', print_percent},
+		{'d', print_integer}, {'i', print_integer}, {'b', print_binary},
 		{'\0', NULL}
 	};
 
@@ -44,4 +45,20 @@ int handle_write_char(char *buffer, char c)
 	buffer[0] = c;
 
 	return (write(1, buffer, 1));
+}
+
+/**
+ * first_digit - Get the first digit in a number
+ * @num: Number
+ *
+ * Return: num
+ */
+
+int first_digit(int num)
+{
+	
+	while (num >= 10)  
+        num  /= 10;
+
+	return (num);
 }
